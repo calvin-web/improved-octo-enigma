@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myApp</title>
+</head>
+<body>
+    <div class="container">
+        <div class="calc">
+            <h1 style="font-size:50px" style="color:chartreuse">Javascript-calculator</h1>
+            value1: <input type="text" id='value1'><br>
+            value2: <input type="text" id='value2'><br>
+            operator:
+            <select id="operator">
+                <option value="add">addition</option>
+                <option value="min">minus</option>
+                <option value="div">divide</option>
+                <option value="multi">multiply</option>
+            </select>
+            <button onclick='calc()'>calculate</button>
+            <div>
+                Result:
+            </div>
+            <script src='block.js'></script>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <h1>to-do App</h1>
+        <form>
+            <input type="text" id='myInput'>
+            <button>AddItem</button>
+        </form id='myForm'>
+        <h2>need to do</h2>
+        <ul id='myList'>
+            <li>wash my car <button onclick="Delete(this)">delete</button></li>
+        </ul>
+        <script>
+            let myForm = document.querySelector("#myForm")
+            let myInput = document.querySelector('#myInput')
+            let myList = document.querySelector("#myList")
+
+            
+
+            myForm = addEventListener('submit', (w)=>{
+                w.preventDefault()
+                snow(myInput.value)
+                myInput.value=''
+                myInput.focus()
+            })
+  
+            function snow(e){
+                let ourHTMl = `<li>${e} <button onclick='Delete(this)'>delete</button></li>`
+                myList.insertAdjacentHTML("beforeend", ourHTMl)
+            }
+
+
+            function Delete(itemToDelete){
+                let comf = confirm('Delete')
+                if(comf == true){
+                    itemToDelete.parentElement.remove()
+                }
+                else{
+                    itemToDelete()
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
